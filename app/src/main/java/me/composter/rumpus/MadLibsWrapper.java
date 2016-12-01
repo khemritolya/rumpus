@@ -1,15 +1,15 @@
 package me.composter.rumpus;
 
-public class MabLibsWrapper {
+public class MadLibsWrapper {
 
     private String[] text;
     private String[] words;
 
-    public MabLibsWrapper(int id, String[] words) {
-        if (MabLibs.all[id].length + 1 != words.length)
+    public MadLibsWrapper(int id, String[] words) {
+        if (MadLibs.all[id].length + 1 != words.length)
             throw new IllegalArgumentException("Invalid Array Lengths in MadLibsWrapper");
 
-        this.text = MabLibs.all[id];
+        this.text = MadLibs.all[id];
         this.words = words;
     }
 
