@@ -1,6 +1,7 @@
 package me.composter.rumpus;
 
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -14,8 +15,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import org.nope.example.rumpus.R;
 
+import java.util.Locale;
+
 public class Launcher extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    TextToSpeech tts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,13 @@ public class Launcher extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int i) {
+                tts.setLanguage(Locale.US);
+            }
+        });
     }
 
     @Override
@@ -47,7 +58,6 @@ public class Launcher extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-
         int id = item.getItemId();
 
         if (id == R.id.nav_stories) {
