@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import me.composter.rumpus.fragments.StoryFragment;
 import org.nope.example.rumpus.R;
 
 import java.util.Locale;
@@ -61,19 +62,28 @@ public class Launcher extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         Fragment fragment = null;
-        Class fragmentClass;
+        Class fragmentClass = StoryFragment.class;
         int id = item.getItemId();
 
-        if (id == R.id.nav_stories) {
+        switch (id) {
+            case R.id.nav_stories:
+                fragmentClass = StoryFragment.class;
+                break;
+            case R.id.nav_help:
+                break;
+            case R.id.nav_settings:
+                break;
+        }
 
-        } else if (id == R.id.nav_help) {
-
-        } else if (id == R.id.nav_settings) {
-
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch(Exception e) {
+            e.printStackTrace();
         }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
