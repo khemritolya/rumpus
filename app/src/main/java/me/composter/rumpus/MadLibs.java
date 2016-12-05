@@ -7,7 +7,7 @@ public class MadLibs {
                     ", and, departing one day, in a relative way, had arrived on the previous ", "NOUN", "!" }
     };
 
-    private static final String[] toReplace = {
+    public static final String[] pos = {
             "NOUN", "VERB"
     };
 
@@ -40,8 +40,8 @@ public class MadLibs {
     private boolean isOther(String in) {
         boolean res = false;
 
-        for (int i = 0; i < toReplace.length; i++) {
-            if (in.equals(toReplace[i])){
+        for (int i = 0; i < pos.length; i++) {
+            if (in.equals(pos[i])){
                 res = false;
                 break;
             }
