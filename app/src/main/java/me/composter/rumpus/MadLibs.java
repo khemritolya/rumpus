@@ -3,8 +3,8 @@ package me.composter.rumpus;
 public class MadLibs {
 
     public static final String[][] stories = {
-            { "EXMAPLE.COM", "There was once a young ", "NOUN", " of Wright, who travelled much faster than ", "NOUN",
-                    ", and, departing one day, in a relative way, had arrived on the previous ", "NOUN", "!" },
+            { "Example", "There was once a young ", "NOUN", " of Wright, who travelled much faster than ", "NOUN",
+                    ", and, departing one day, in a relative way, had ", "VERB", " on the previous ", "NOUN", "!" },
     };
 
     public static final String[] pos = {
