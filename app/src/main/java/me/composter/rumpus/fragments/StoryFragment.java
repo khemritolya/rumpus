@@ -40,8 +40,10 @@ public class StoryFragment extends ListFragment {
         String[] thingsToAskFor = m.requestInputs();
         String[] thingsIGot = new String[thingsToAskFor.length];
 
+        for (int i = 0; i < thingsToAskFor.length; i++) {
+            //TODO ASK FOR INPUT
+        }
 
-        
         String res = m.assemble(thingsIGot);
 
         //Speak RES
