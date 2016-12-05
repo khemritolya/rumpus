@@ -5,10 +5,10 @@ import android.support.v7.view.menu.ListMenuItemView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import android.widget.TwoLineListItem;
+import android.widget.*;
 import me.composter.rumpus.fragments.dummy.Story;
+import org.nope.example.rumpus.R;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -41,19 +41,18 @@ public class ItemListAdapter extends BaseAdapter {
         if (stories == null) {
             stories = new ArrayList<>();
         }
-        TwoLineListItem twoLineListItem;
+        LinearLayout listItemLayout;
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            twoLineListItem = (TwoLineListItem) inflater.inflate(android.R.layout.simple_list_item_2, null);
+            listItemLayout = (LinearLayout) inflater.inflate(R.layout.list_item, null);
         } else {
-            twoLineListItem = (TwoLineListItem) convertView;
+            listItemLayout = (LinearLayout) convertView;
         }
 
-        TextView text1 = twoLineListItem.getText1();
-        TextView text2 = twoLineListItem.getText2();
+        TextView text = (TextView) listItemLayout.findViewById(R.id.text1);
 
-        text1.setText(stories.get(position).getName());
+        text.setText(stories.get(position).getName());
 
-        return twoLineListItem;
+        return listItemLayout;
     }
 }
