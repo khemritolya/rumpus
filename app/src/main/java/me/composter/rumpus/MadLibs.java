@@ -28,7 +28,9 @@ public class MadLibs {
         return res;
     }
 
-    public String assemble() {
+    public String assemble(String[] inputs) {
+
+
         String res = "";
 
         for (int i = 0; i < stories[storyId].length; i++)
