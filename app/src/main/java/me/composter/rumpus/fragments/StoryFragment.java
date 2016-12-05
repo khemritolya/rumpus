@@ -33,6 +33,20 @@ public class StoryFragment extends ListFragment {
         Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
 
         ((Launcher) this.getActivity()).tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, this.hashCode() + ":" + text);
+
+        //HOW TO USE MADLIBS OBJECT
+
+        MadLibs m = new MadLibs(position);
+        String[] thingsToAskFor = m.requestInputs();
+        String[] thingsIGot = new String[thingsToAskFor.length];
+
+        for (int i = 0; i < thingsToAskFor.length; i++) {
+            //TODO ASK FOR INPUT
+        }
+
+        String res = m.assemble(thingsIGot);
+
+        //Speak RES
     }
 
     private ArrayList<Story> generateStories() {
