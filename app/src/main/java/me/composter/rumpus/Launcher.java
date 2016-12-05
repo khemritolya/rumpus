@@ -62,23 +62,16 @@ public class Launcher extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         Fragment fragment = null;
-        Class fragmentClass = StoryFragment.class;
         int id = item.getItemId();
 
         switch (id) {
             case R.id.nav_stories:
-                fragmentClass = StoryFragment.class;
+                fragment = new StoryFragment();
                 break;
             case R.id.nav_help:
                 break;
             case R.id.nav_settings:
                 break;
-        }
-
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch(Exception e) {
-            e.printStackTrace();
         }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
