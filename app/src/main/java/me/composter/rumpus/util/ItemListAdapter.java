@@ -1,6 +1,58 @@
 package me.composter.rumpus.util;
 
-public class ItemListAdapter {
+import android.content.Context;
+import android.support.v7.view.menu.ListMenuItemView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.*;
+import me.composter.rumpus.fragments.dummy.Story;
+import org.nope.example.rumpus.R;
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+
+public class ItemListAdapter extends BaseAdapter {
     private Context context;
-    private Array
+    private ArrayList<Story> stories;
+
+    public ItemListAdapter(Context context, ArrayList<Story> stories) {
+        this.context = context;
+        this.stories = stories;
+    }
+
+    @Override
+    public int getCount() {
+        return stories.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return stories.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return stories.get(position).getId();
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (stories == null) {
+            stories = new ArrayList<>();
+        }
+        LinearLayout listItemLayout;
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            listItemLayout = (LinearLayout) inflater.inflate(R.layout.list_item, null);
+        } else {
+            listItemLayout = (LinearLayout) convertView;
+        }
+
+        TextView text = (TextView) listItemLayout.findViewById(R.id.text1);
+
+        text.setText(stories.get(position).getName());
+
+        return listItemLayout;
+    }
 }

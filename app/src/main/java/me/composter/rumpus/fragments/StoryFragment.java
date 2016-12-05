@@ -1,23 +1,20 @@
 package me.composter.rumpus.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
-import me.composter.rumpus.R;
-import me.composter.rumpus.fragments.dummy.DummyContent;
-import me.composter.rumpus.fragments.dummy.DummyContent.DummyItem;
+import android.widget.TextView;
+import android.widget.Toast;
+import me.composter.rumpus.Launcher;
+import me.composter.rumpus.MadLibs;
+import me.composter.rumpus.fragments.dummy.Story;
+import me.composter.rumpus.util.ItemListAdapter;
 import org.nope.example.rumpus.R;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class StoryFragment extends ListFragment {
     protected ItemListAdapter adapter;
@@ -25,12 +22,26 @@ public class StoryFragment extends ListFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        adapter = new ItemListAdapter(getActivity(), /**Something goes here.**/);
+        adapter = new ItemListAdapter(getActivity(), generateStories());
         setListAdapter(adapter);
     }
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        //I haven't the faintest idea.
+        String text = "You selected: " + ((TextView) v.findViewById(R.id.text1)).getText();
+
+        Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
+
+        ((Launcher) this.getActivity()).tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, this.hashCode() + ":" + text);
+    }
+
+    private ArrayList<Story> generateStories() {
+        ArrayList<Story> stories = new ArrayList<>();
+        int i = 0;
+        for (String[] strings : MadLibs.stories) {
+            stories.add(new Story(strings[0], i));
+            i++;
+        }
+        return stories;
     }
 }

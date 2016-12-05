@@ -6,11 +6,11 @@ public class MadLibsWrapper {
     private String[] words;
 
     public MadLibsWrapper(int id, String[] words) {
-        if (MadLibs.all[id].length + 1 != words.length)
+        /*if (MadLibs.all[id].length + 1 != words.length)
             throw new IllegalArgumentException("Invalid Array Lengths in MadLibsWrapper");
 
         this.text = MadLibs.all[id];
-        this.words = words;
+        this.words = words;*/
     }
 
     public String assemble() {

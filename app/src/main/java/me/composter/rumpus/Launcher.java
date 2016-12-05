@@ -22,7 +22,7 @@ import java.util.Locale;
 
 public class Launcher extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    TextToSpeech tts;
+    public TextToSpeech tts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
