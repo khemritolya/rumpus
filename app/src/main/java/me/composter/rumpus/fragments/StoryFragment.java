@@ -1,13 +1,18 @@
 package me.composter.rumpus.fragments;
 
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+import me.composter.rumpus.Launcher;
 import me.composter.rumpus.MadLibs;
 import me.composter.rumpus.fragments.dummy.Story;
 import me.composter.rumpus.util.ItemListAdapter;
+import org.nope.example.rumpus.R;
 
 import java.util.ArrayList;
 
@@ -23,7 +28,11 @@ public class StoryFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        //I haven't the faintest idea.
+        String text = "You selected: " + ((TextView) v.findViewById(R.id.text1)).getText();
+
+        Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
+
+        ((Launcher) this.getActivity()).tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, this.hashCode() + ":" + text);
     }
 
     private ArrayList<Story> generateStories() {
