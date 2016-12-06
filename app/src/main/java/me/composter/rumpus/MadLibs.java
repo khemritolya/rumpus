@@ -29,7 +29,8 @@ public class MadLibs {
     }
 
     public String assemble(String[] inputs) {
-
+        if (inputs.length != stories[storyId].length)
+            throw new IllegalArgumentException("Inavlid Input Length");
 
         String res = "";
 

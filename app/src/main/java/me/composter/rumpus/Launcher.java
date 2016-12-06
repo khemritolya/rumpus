@@ -1,5 +1,6 @@
 package me.composter.rumpus;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
@@ -24,6 +25,11 @@ import java.util.Locale;
 public class Launcher extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public TextToSpeech tts;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +53,9 @@ public class Launcher extends AppCompatActivity
                 tts.setLanguage(Locale.US);
             }
         });
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @Override

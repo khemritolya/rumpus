@@ -5,9 +5,14 @@
     tools:context="me.composter.rumpus.fragments.OutputFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="349dp"
+        android:layout_height="495dp"
+        android:text="@string/hello_blank_fragment"
+        android:layout_gravity="center"
+        android:id="@+id/viewThing"
+        android:textSize="30dp"
+        android:textIsSelectable="false" />
 
 </FrameLayout>
