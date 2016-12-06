@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.TextView;
 import org.nope.example.rumpus.R;
 
 import java.util.ArrayList;
@@ -20,7 +21,8 @@ public class InputFragment extends Fragment {
     public void setArguments(Bundle args) {
         super.setArguments(args);
         wordType = getArguments().getString("wordType");
-
+        TextView label = (TextView) getView().findViewById(R.id.inputTextView);
+        label.setText(wordType);
     }
 
     @Override

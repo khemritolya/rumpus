@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import me.composter.rumpus.fragments.InputFragment;
 import me.composter.rumpus.fragments.StoryFragment;
 import org.nope.example.rumpus.R;
 
@@ -69,6 +70,10 @@ public class Launcher extends AppCompatActivity
                 fragment = new StoryFragment();
                 break;
             case R.id.nav_help:
+                fragment = new InputFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("wordType", "Noun");
+                fragment.setArguments(bundle);
                 break;
             case R.id.nav_settings:
                 break;
@@ -80,5 +85,8 @@ public class Launcher extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void processInput(View v) {
     }
 }
