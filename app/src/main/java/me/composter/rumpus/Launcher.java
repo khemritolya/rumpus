@@ -16,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 import me.composter.rumpus.fragments.InputFragment;
 import me.composter.rumpus.fragments.StoryFragment;
 import org.nope.example.rumpus.R;
@@ -25,11 +27,6 @@ import java.util.Locale;
 public class Launcher extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public TextToSpeech tts;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +50,6 @@ public class Launcher extends AppCompatActivity
                 tts.setLanguage(Locale.US);
             }
         });
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @Override
@@ -83,8 +77,6 @@ public class Launcher extends AppCompatActivity
                 Bundle bundle = new Bundle();
                 bundle.putString("wordType", "Noun");
                 fragment.setArguments(bundle);
-                break;
-            case R.id.nav_settings:
                 break;
         }
 
