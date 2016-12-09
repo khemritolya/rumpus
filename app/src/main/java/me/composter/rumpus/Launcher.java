@@ -27,6 +27,7 @@ import java.util.Locale;
 public class Launcher extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public TextToSpeech tts;
+    public MadLibs m;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

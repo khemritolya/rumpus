@@ -34,19 +34,17 @@ public class StoryFragment extends ListFragment {
 
         ((Launcher) this.getActivity()).tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, this.hashCode() + ":" + text);
 
-        //HOW TO USE MADLIBS OBJECT
-
-        MadLibs m = new MadLibs(position);
-        String[] thingsToAskFor = m.requestInputs();
+        ((Launcher)getActivity()).m = new MadLibs(position);
+        String[] thingsToAskFor = ((Launcher)getActivity()).m.requestInputs();
         String[] thingsIGot = new String[thingsToAskFor.length];
 
         for (int i = 0; i < thingsToAskFor.length; i++) {
-            //TODO ASK FOR INPUT
+            //thingsIGot[i];
         }
 
-        String res = m.assemble(thingsIGot);
+        String res = ((Launcher)getActivity()).m.assemble(thingsIGot);
 
-        //Speak RES
+
     }
 
     private ArrayList<Story> generateStories() {
