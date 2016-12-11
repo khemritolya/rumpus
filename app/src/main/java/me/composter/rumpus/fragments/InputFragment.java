@@ -1,88 +1,64 @@
 package me.composter.rumpus.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.TextView;
+import me.composter.rumpus.Launcher;
+import me.composter.rumpus.MadLibs;
 import org.nope.example.rumpus.R;
 
-public class InputFragment extends Fragment implements RecognitionListener {
+import java.util.ArrayList;
+import java.util.Locale;
+
+
+public class InputFragment extends Fragment {
     private String wordType;
-    SpeechRecognizer speechRecognizer;
+    private int position;
+    private MadLibs m;
+
     @Override
     public void setArguments(Bundle args) {
         super.setArguments(args);
         wordType = getArguments().getString("wordType");
+        position = getArguments().getInt("position");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_input, container, false);
-        TextView label = (TextView) v.findViewById(R.id.inputTextView);
-        label.setText(wordType);
-        SpeechRecognizer.createSpeechRecognizer(getContext());
-        speechRecognizer.setRecognitionListener(this);
 
+        m = ((Launcher) getActivity()).m;
+
+        ((Launcher) getActivity()).tts.speak("Please say a " + wordType, TextToSpeech.QUEUE_FLUSH, savedInstanceState, "" + this.hashCode());
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, "voice.recognition.test");
-        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 5);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Hello world.");
+        startActivityForResult(intent, 100);
 
-        speechRecognizer.startListening(intent);
         return v;
     }
 
     @Override
-    public void onReadyForSpeech(Bundle bundle) {
-
-    }
-
-    @Override
-    public void onBeginningOfSpeech() {
-
-    }
-
-    @Override
-    public void onRmsChanged(float v) {
-
-    }
-
-    @Override
-    public void onBufferReceived(byte[] bytes) {
-
-    }
-
-    @Override
-    public void onEndOfSpeech() {
-        System.out.println("Ended speech");
-    }
-
-    @Override
-    public void onError(int i) {
-
-    }
-
-    @Override
-    public void onResults(Bundle bundle) {
-
-    }
-
-    @Override
-    public void onPartialResults(Bundle bundle) {
-
-    }
-
-    @Override
-    public void onEvent(int i, Bundle bundle) {
-
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+        m.wordsToAdd[position] = result.get(0);
+        try {
+            Bundle bundle = new Bundle();
+            bundle.putString("wordType", m.thingsToAskFor[position + 1]);
+            bundle.putInt("position", position + 1);
+            ((Launcher) getActivity()).switchFragment(InputFragment.class, bundle);
+        } catch(Exception e) {
+            ((Launcher) getActivity()).switchFragment(OutputFragment.class, null);
+        }
     }
 }

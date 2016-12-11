@@ -11,10 +11,14 @@ public class MadLibs {
             "NOUN", "VERB"
     };
 
+    public String[] thingsToAskFor;
+    public String[] wordsToAdd;
+
     private int storyId;
 
     public MadLibs(int storyID) {
         this.storyId = storyID;
+        thingsToAskFor = requestInputs();
     }
 
     public String[] requestInputs() {

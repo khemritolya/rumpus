@@ -66,29 +66,40 @@ public class Launcher extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        Fragment fragment = null;
+        Class<? extends Fragment> fragmentClass = Fragment.class;
         int id = item.getItemId();
 
         switch (id) {
             case R.id.nav_stories:
-                fragment = new StoryFragment();
+                fragmentClass = StoryFragment.class;
                 break;
             case R.id.nav_help:
-                fragment = new InputFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("wordType", "Noun");
-                fragment.setArguments(bundle);
+                fragmentClass = StoryFragment.class;
                 break;
         }
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-
+        switchFragment(fragmentClass, null);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    public void processInput(View v) {
+    public void switchFragment(Class<? extends Fragment> fragmentClass, Bundle bundle) {
+        try {
+            Fragment fragment = fragmentClass.newInstance();
+            fragment.setArguments(bundle);
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleInput(MadLibs m) {
+        this.m = m;
+        Bundle bundle = new Bundle();
+        bundle.putString("wordType", m.thingsToAskFor[0]);
+        bundle.putInt("position", 0);
+        switchFragment(InputFragment.class, bundle);
     }
 }

@@ -19,7 +19,7 @@ public class OutputFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String story = savedInstanceState.getString("THITNFA UGTRFBL");
+        String story = ((Launcher) getActivity()).m.assemble(((Launcher) getActivity()).m.wordsToAdd);
 
         TextView t = (TextView) getView().findViewById(R.id.viewThing);
         t.setText(story);
