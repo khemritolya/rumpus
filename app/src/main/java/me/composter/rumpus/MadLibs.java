@@ -22,6 +22,8 @@ public class MadLibs {
     }
 
     public String[] requestInputs() {
+        System.out.println("Story ID: " + storyId);
+        System.out.println("Story: " + java.util.Arrays.toString(stories[storyId]));
         String[] res = new String[countOthers(stories[storyId])];
 
         int j = 0;
@@ -61,8 +63,9 @@ public class MadLibs {
         int i = 0;
 
         for (int j = 0; j < story.length; j++) {
-            if (isOther(story[j]))
+            if (isOther(story[j])) {
                 i++;
+            }
         }
 
         return i;
