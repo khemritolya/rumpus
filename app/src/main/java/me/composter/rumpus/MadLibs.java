@@ -51,7 +51,7 @@ public class MadLibs {
 
         for (int i = 0; i < pos.length; i++) {
             if (in.equals(pos[i])){
-                res = false;
+                res = true;
                 break;
             }
         }
