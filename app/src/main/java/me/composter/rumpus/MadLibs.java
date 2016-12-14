@@ -21,14 +21,15 @@ public class MadLibs {
         thingsToAskFor = requestInputs();
     }
 
-    public String[] requestInputs() {
-        System.out.println("Story ID: " + storyId);
-        System.out.println("Story: " + java.util.Arrays.toString(stories[storyId]));
+    public static String[] requestInputs() {
         String[] res = new String[countOthers(stories[storyId])];
 
         int j = 0;
         for (int i = 0; i < stories[storyId].length; i++) {
-            res[j] = stories[storyId][i];
+            if (isOther(stories[storyId][i])) {
+                res[j] = stories[storyId][i];
+                j++;
+            }
         }
 
         return res;
