@@ -21,7 +21,7 @@ public class MadLibs {
         thingsToAskFor = requestInputs();
     }
 
-    public static String[] requestInputs() {
+    public String[] requestInputs() {
         String[] res = new String[countOthers(stories[storyId])];
 
         int j = 0;
