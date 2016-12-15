@@ -35,18 +35,21 @@ public class MadLibs {
         return res;
     }
 
-    public String assemble(String[] inputs) {
-        if (inputs.length != stories[storyId].length)
-            throw new IllegalArgumentException("Inavlid Input Length");
-
+    private String assemble(String[] inputs) {
         String res = "";
-
-        for (int i = 0; i < stories[storyId].length; i++)
-            res += stories[storyId][i];
-
+        
+        int i = 0;
+        for (int j = 0; j < stories[storyId].length; j++) {
+            if (isOther(stories[storyId][j])) {
+                res += inputs[i];
+                i++;
+            } else {
+                res += stories[storyId][j];
+            }
+        }
+        
         return res;
     }
-
     private boolean isOther(String in) {
         boolean res = false;
 
