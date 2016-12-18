@@ -3,8 +3,16 @@ package me.composter.rumpus;
 public class MadLibs {
 
     public static final String[][] stories = {
-            { "Example", "There was once a young ", "NOUN", " of Wright, who travelled much faster than ", "NOUN",
+            { "Light", "There was once a young ", "NOUN", " of Wright, who travelled much faster than ", "NOUN",
                     ", and, departing one day, in a relative way, had ", "VERB", " on the previous ", "NOUN", "!" },
+            { "Three", "Once there were three little ", "NOUN", ". One of them ", "VERB", " a house out of ", "NOUN",
+                    ", but the big bad ", "NOUN", "blew it down. Another little pig ", "VERB", " his house out of ",
+                    "NOUN", ", but again the big bad ", "NOUN", " ", "VERB", " it down. The last little", "NOUN",
+                    " decided to ", "VERB", " a house out of ", "NOUN", " and this time, the ", "NOUN", " did not ",
+                    "VERB", " the ", "NOUN", " down. Yay!" },
+            { "Lunch", "Our cafeteria serves wonderful ", "NOUN", ". I especially like the fried ", "NOUN",
+                    "special. I can sit on ", "NOUN", "s and ", "VERB", " to my best ", "NOUN", ". Sometimes, the ",
+                    "NOUN", " tastes funny, especially when they ", "VERB", " ", "NOUN", "."}
     };
 
     public static final String[] pos = {
