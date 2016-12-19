@@ -27,6 +27,7 @@ public class MadLibs {
     public MadLibs(int storyID) {
         this.storyId = storyID;
         thingsToAskFor = requestInputs();
+        wordsToAdd = new String[thingsToAskFor.length];
     }
 
     public String[] requestInputs() {
@@ -43,7 +44,7 @@ public class MadLibs {
         return res;
     }
 
-    private String assemble(String[] inputs) {
+    public String assemble(String[] inputs) {
         String res = "";
         
         int i = 0;
