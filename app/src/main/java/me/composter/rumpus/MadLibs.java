@@ -3,14 +3,14 @@ package me.composter.rumpus;
 public class MadLibs {
 
     public static final String[][] stories = {
-            { "Light ", "There was once a young ", "NOUN", " of Wright, who travelled much faster than ", "NOUN",
-                    ", and, departing one day, in a relative way, had ", "VERB", " on the previous ", "NOUN", "!" },
-            { "Three ", "Once there were three little ", "NOUN", ". One of them ", "VERB", " a house out of ", "NOUN",
+            {"Light ", "There was once a young ", "NOUN", " of Wright, who travelled much faster than ", "NOUN",
+                    ", and, departing one day, in a relative way, had ", "VERB", " on the previous ", "NOUN", "!"},
+            {"Three ", "Once there were three little ", "NOUN", ". One of them ", "VERB", " a house out of ", "NOUN",
                     ", but the big bad ", "NOUN", "blew it down. Another little pig ", "VERB", " his house out of ",
                     "NOUN", ", but again the big bad ", "NOUN", " ", "VERB", " it down. The last little", "NOUN",
                     " decided to ", "VERB", " a house out of ", "NOUN", " and this time, the ", "NOUN", " did not ",
-                    "VERB", " the ", "NOUN", " down. Yay!" },
-            { "Lunch ", "Our cafeteria serves wonderful ", "NOUN", ". I especially like the fried ", "NOUN",
+                    "VERB", " the ", "NOUN", " down. Yay!"},
+            {"Lunch ", "Our cafeteria serves wonderful ", "NOUN", ". I especially like the fried ", "NOUN",
                     " special. I can sit on ", "NOUN", "s and ", "VERB", " to my best ", "NOUN", ". Sometimes, the ",
                     "NOUN", " tastes funny, especially when they ", "VERB", " ", "NOUN", "."}
     };
@@ -46,7 +46,7 @@ public class MadLibs {
 
     public String assemble(String[] inputs) {
         String res = "";
-        
+
         int i = 0;
         for (int j = 0; j < stories[storyId].length; j++) {
             if (isOther(stories[storyId][j])) {
@@ -56,14 +56,15 @@ public class MadLibs {
                 res += stories[storyId][j];
             }
         }
-        
+
         return res;
     }
+
     private boolean isOther(String in) {
         boolean res = false;
 
         for (int i = 0; i < pos.length; i++) {
-            if (in.equals(pos[i])){
+            if (in.equals(pos[i])) {
                 res = true;
                 break;
             }

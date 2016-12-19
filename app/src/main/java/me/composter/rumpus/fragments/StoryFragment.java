@@ -34,7 +34,7 @@ public class StoryFragment extends ListFragment {
 
         ((Launcher) this.getActivity()).tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, this.hashCode() + ":" + text);
 
-        ((Launcher)getActivity()).handleInput(new MadLibs(position));
+        ((Launcher) getActivity()).handleInput(new MadLibs(position));
     }
 
     private ArrayList<Story> generateStories() {

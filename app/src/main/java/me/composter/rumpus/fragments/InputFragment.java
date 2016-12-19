@@ -3,14 +3,12 @@ package me.composter.rumpus.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import me.composter.rumpus.Launcher;
 import me.composter.rumpus.MadLibs;
 import org.nope.example.rumpus.R;
@@ -57,7 +55,7 @@ public class InputFragment extends Fragment {
             bundle.putString("wordType", m.thingsToAskFor[position + 1]);
             bundle.putInt("position", position + 1);
             ((Launcher) getActivity()).switchFragment(InputFragment.class, bundle);
-        } catch(Exception e) {
+        } catch (Exception e) {
             ((Launcher) getActivity()).switchFragment(OutputFragment.class, null);
         }
     }
