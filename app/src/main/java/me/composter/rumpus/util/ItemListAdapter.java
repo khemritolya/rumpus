@@ -1,15 +1,18 @@
 package me.composter.rumpus.util;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import me.composter.rumpus.fragments.dummy.Story;
 import org.nope.example.rumpus.R;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class ItemListAdapter extends BaseAdapter {
@@ -50,9 +53,14 @@ public class ItemListAdapter extends BaseAdapter {
         }
 
         TextView text = (TextView) listItemLayout.findViewById(R.id.text1);
-
         text.setText(stories.get(position).getName());
-
+        try {
+            ImageView image = (ImageView) listItemLayout.findViewById(R.id.imageView);
+            image.setImageResource(R.drawable.light);
+            //image.setImageResource(R.drawable.class.getDeclaredField("light").getInt(null));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return listItemLayout;
     }
 }

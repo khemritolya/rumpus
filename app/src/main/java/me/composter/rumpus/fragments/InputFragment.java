@@ -49,14 +49,16 @@ public class InputFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-        m.wordsToAdd[position] = result.get(0);
-        try {
-            Bundle bundle = new Bundle();
-            bundle.putString("wordType", m.thingsToAskFor[position + 1]);
-            bundle.putInt("position", position + 1);
-            ((Launcher) getActivity()).switchFragment(InputFragment.class, bundle);
-        } catch (Exception e) {
-            ((Launcher) getActivity()).switchFragment(OutputFragment.class, null);
+        if (result.get(0) != null) {
+            m.wordsToAdd[position] = result.get(0);
+            try {
+                Bundle bundle = new Bundle();
+                bundle.putString("wordType", m.thingsToAskFor[position + 1]);
+                bundle.putInt("position", position + 1);
+                ((Launcher) getActivity()).switchFragment(InputFragment.class, bundle);
+            } catch (Exception e) {
+                ((Launcher) getActivity()).switchFragment(OutputFragment.class, null);
+            }
         }
     }
 }
