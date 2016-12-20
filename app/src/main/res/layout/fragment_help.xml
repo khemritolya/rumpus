@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="265dp"
         android:text="Noun?"
-        android:id="@+id/button"
+        android:id="@+id/nounButton"
         android:layout_gravity="center_horizontal|top"
         android:textSize="100dp"
         android:background="#ff4081" />
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:text="Verb?"
-        android:id="@+id/button2"
+        android:id="@+id/verbButton"
         android:layout_gravity="center_horizontal|bottom"
         android:textSize="100dp"
         android:background="#ff4081" />
