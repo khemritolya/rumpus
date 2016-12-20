@@ -1,0 +1,26 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.composter.rumpus.fragments.HelpFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="265dp"
+        android:text="Noun?"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal|top"
+        android:textSize="100dp"
+        android:background="#ff4081" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:text="Verb?"
+        android:id="@+id/button2"
+        android:layout_gravity="center_horizontal|bottom"
+        android:textSize="100dp"
+        android:background="#ff4081" />
+</FrameLayout>
